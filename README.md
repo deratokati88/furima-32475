@@ -2,14 +2,16 @@
 
 ## users テーブル
 
-| Column     | Type    | Options     |
-| ---------- | ------- | ----------- |
-| email      |  string | null: false |
-| password   |  string | null: false |
-| kananame   |  string | null: false |
-| name       |  string | null: false |
-| nickname   |  string | null: false |
-| birthday   |datetime | null: false |
+| Column               | Type    | Options     |
+| -------------------- | ------- | ----------- |
+| email                |  string | null: false |
+| encrypted_password   |  string | null: false |
+| f_kananame           |  string | null: false |
+| l_kananame           |  string | null: false |
+| f_name               |  string | null: false |
+| l_name               |  string | null: false |
+| nickname             |  string | null: false |
+| birthday             |    date | null: false |
 
 ### Association
 
@@ -18,34 +20,28 @@
 
 ## items テーブル
 
-| Column          | Type      | Options                        |
-| --------------- | --------- | ------------------------------ |
-| item_name       |    string |                    null: false |
-| description     |      text |                    null: false |
-| category        |    string |                    null: false |
-| status          |    string |                    null: false |
-| shipping_charge |    string |                    null: false |
-| area            |    string |                    null: false |
-| shipping_time   |   integer |                    null: false |
-| price           |   integer |                    null: false |
-| user            | reference | null: false, foreign_key: true |
-| buyer           | reference | null: false, foreign_key: true |
+| Column             | Type      | Options                        |
+| -----------------  | --------- | ------------------------------ |
+| name               |    string |                    null: false |
+| description        |      text |                    null: false |
+| category_id        |   integer |                    null: false |
+| status_id          |   integer |                    null: false |
+| shipping_charge_id |   integer |                    null: false |
+| area_id            |   integer |                    null: false |
+| shipping_time_id   |   integer |                    null: false |
+| price              |   integer |                    null: false |
+| user               | reference | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :users
-- belongs_to :buyer
 
 ## buyers テーブル
 
 | Column     | Type      | Options                        |
 | ---------- | --------- | ------------------------------ |
-| c_number   |   integer |                    null: false |
-| c_limit    |  datetime |                    null: false |
-| c_code     |   integer |                    null: false |
 | user       | reference | null: false, foreign_key: true |
 | item       | reference | null: false, foreign_key: true |
-| shipping   | reference | null: false, foreign_key: true |
 
 ### Association
 
@@ -57,12 +53,12 @@
 
 | Column      | Type      | Options                        |
 | ----------- | --------- | ------------------------------ |
-| postal_code |   integer |                    null: false |
+| postal_code |    string |                    null: false |
 | prefecture  |    string |                    null: false |
 | city        |    string |                    null: false |
 | address     |    string |                    null: false |
 | building    |    string |                                |
-| phone       |   integer |                    null: false |
+| phone       |    string |                    null: false |
 | buyer       | reference | null: false, foreign_key: true |
 ## Association
 
