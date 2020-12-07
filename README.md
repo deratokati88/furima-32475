@@ -27,7 +27,7 @@
 | category_id        |   integer |                    null: false |
 | status_id          |   integer |                    null: false |
 | shipping_charge_id |   integer |                    null: false |
-| area_id            |   integer |                    null: false |
+| prefecture_id      |   integer |                    null: false |
 | shipping_time_id   |   integer |                    null: false |
 | price              |   integer |                    null: false |
 | user               | reference | null: false, foreign_key: true |
@@ -51,15 +51,15 @@
 
 ## shipping テーブル
 
-| Column      | Type      | Options                        |
-| ----------- | --------- | ------------------------------ |
-| postal_code |    string |                    null: false |
-| prefecture  |    string |                    null: false |
-| city        |    string |                    null: false |
-| address     |    string |                    null: false |
-| building    |    string |                                |
-| phone       |    string |                    null: false |
-| buyer       | reference | null: false, foreign_key: true |
+| Column        | Type      | Options                        |
+| ------------- | --------- | ------------------------------ |
+| postal_code   |    string |                    null: false |
+| prefecture_id |    string |                    null: false |
+| city          |    string |                    null: false |
+| address       |    string |                    null: false |
+| building      |    string |                                |
+| phone         |    string |                    null: false |
+| buyer         | reference | null: false, foreign_key: true |
 ## Association
 
 - belongs_to :buyer
