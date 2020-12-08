@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
-  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i, message: "は6文字以上かつ英数字をそれぞれ含めてください" }
-  validates :nickname,:birthday, presence: true
+
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'は6文字以上かつ英数字をそれぞれ含めてください' }
+  validates :nickname, :birthday, presence: true
 
   # validates :f_kananame,:l_kananame, presence: true,
   #   format: {
@@ -15,7 +15,6 @@ class User < ApplicationRecord
     validates :f_kananame
     validates :l_kananame
   end
-
 
   # validates :f_name,:l_name, presence: true,
   #   format: {
@@ -30,6 +29,4 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :buyers
-
-  
 end
