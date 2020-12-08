@@ -9,10 +9,15 @@ class User < ApplicationRecord
     format: {
     with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
     message: "全角カタカナのみで入力して下さい"
-    }
-    validates :f_name,:l_name, presence: true,
+  }
+  validates :f_name,:l_name, presence: true,
     format: {
     with: /\A[ぁ-んァ-ン一-龥]+\z/,
     message: "全角で漢字、ひらがな、かたかなのみで入力して下さい"
-    }
+  }
+
+  has_many :items
+  has_many :buyers
+
+  
 end
