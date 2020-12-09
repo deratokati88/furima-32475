@@ -9,5 +9,8 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   validates :name, :description, :price, presence: true
+  validates :price, format: { with: /\A[0-9]+\z/, message: '半角数字を入力してください' }, numericality: { only_integer: true,
+    greater_than: 299, less_than: 1000000
+    }
   validates :category_id, :status_id, :shipping_charge_id, :prefecture_id, :shipping_time_id, numericality: { other_than: 1 } 
 end
