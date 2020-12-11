@@ -4,7 +4,7 @@ window.addEventListener('load', () => {
   const addProfitDom = document.getElementById("profit");
     priceInput.addEventListener("input", () => {
     const priceValue = priceInput.value
-    addTaxDom.innerHTML = priceValue * 0.1
-    addProfitDom.innerHTML = priceValue * 0.9
+    addTaxDom.innerHTML = Math.round(priceValue * 0.1) 
+    addProfitDom.innerHTML = Math.round(priceValue * 0.9)
   })
 });
