@@ -28,19 +28,19 @@ RSpec.describe BuyerShipping, type: :model do
     it '郵便番号には文字は保存できない' do
       @buyer_shipping.postal_code = 'aaa-aaaa'
       @buyer_shipping.valid?
-      expect(@buyer_shipping.errors.full_messages).to include "Postal code is invalid. Include hyphen(-)"
+      expect(@buyer_shipping.errors.full_messages).to include 'Postal code is invalid. Include hyphen(-)'
     end
 
     it '郵便番号にはハイフンがなければ保存できない' do
       @buyer_shipping.postal_code = '1234567'
       @buyer_shipping.valid?
-      expect(@buyer_shipping.errors.full_messages).to include "Postal code is invalid. Include hyphen(-)"
+      expect(@buyer_shipping.errors.full_messages).to include 'Postal code is invalid. Include hyphen(-)'
     end
 
     it '都道府県コードを入力しなければ保存できない' do
       @buyer_shipping.prefecture_id = 1
       @buyer_shipping.valid?
-      expect(@buyer_shipping.errors.full_messages).to include "Prefecture must be other than 1"
+      expect(@buyer_shipping.errors.full_messages).to include 'Prefecture must be other than 1'
     end
 
     it '市区町村がなければ保存できない' do
@@ -64,16 +64,16 @@ RSpec.describe BuyerShipping, type: :model do
     it '電話番号が11桁以上では保存できない' do
       @buyer_shipping.phone = '123456789123'
       @buyer_shipping.valid?
-      expect(@buyer_shipping.errors.full_messages).to include "Phone is invalid. Input half-width characters."
+      expect(@buyer_shipping.errors.full_messages).to include 'Phone is invalid. Input half-width characters.'
     end
 
     it '電話番号はハイフンがあると保存できない' do
       @buyer_shipping.phone = '090-123-456'
       @buyer_shipping.valid?
-      expect(@buyer_shipping.errors.full_messages).to include "Phone is invalid. Input half-width characters."
+      expect(@buyer_shipping.errors.full_messages).to include 'Phone is invalid. Input half-width characters.'
     end
 
-    it "tokenが空では登録できないこと" do
+    it 'tokenが空では登録できないこと' do
       @buyer_shipping.token = nil
       @buyer_shipping.valid?
       expect(@buyer_shipping.errors.full_messages).to include("Token can't be blank")
