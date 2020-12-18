@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to root_path  
+    redirect_to root_path
   end
 
   private
@@ -49,6 +49,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to action: :index unless current_user.id == @item.user.id
+    redirect_to action: :index if current_user.id != @item.user.id || Buyer.where(item_id: @item.id).exists?
   end
 end
