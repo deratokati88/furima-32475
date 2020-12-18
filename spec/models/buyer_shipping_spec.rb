@@ -19,6 +19,19 @@ RSpec.describe BuyerShipping, type: :model do
       expect(@buyer_shipping).to be_valid
     end
 
+    it 'ユーザーIDがなければ登録できない' do
+      @buyer_shipping.user_id = nil
+      @buyer_shipping.valid?
+      expect(@buyer_shipping.errors.full_messages).to include "User can't be blank"
+    end
+
+
+    it 'アイテムIDがなければ登録できない' do
+      @buyer_shipping.item_id = nil
+      @buyer_shipping.valid?
+      expect(@buyer_shipping.errors.full_messages).to include "Item can't be blank"
+    end
+
     it '郵便番号がなければ登録できない' do
       @buyer_shipping.postal_code = ''
       @buyer_shipping.valid?
